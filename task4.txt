@@ -1,0 +1,11 @@
+val lines = sc.textFile("data_input")
+val edges = lines.map(x=>x.split('\t'))
+val forward = edges.map(x => (x(0),x(1)))
+val backward = edges.map(x => (x(1),x(0)))
+val connections = backward.join(forward)
+val pathways = connections.map(x => x._2)
+val two_jumps = pathways.filter(x => (x._1 != x._2))
+val result = forward.union(two_jumps)
+
+
+

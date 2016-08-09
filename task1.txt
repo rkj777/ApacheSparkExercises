@@ -1,0 +1,7 @@
+val lines = sc.textFile("data_input")
+val edges = lines.map(x=>x.split('\t'))
+val nodesCountable = edges.map(x => (x(1),1))
+val addedNodes = nodesCountable.reduceByKey((a,b) => a +b)
+val swappedAddedNodes = addedNodes.map(x=>(x._2,x._1))
+val maxIndegree = swappedAddedNodes.max()
+val result = maxIndegree._1

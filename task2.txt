@@ -1,0 +1,10 @@
+val lines = sc.textFile("data_input")
+val edges = lines.map(x=>x.split('\t'))
+val forwardEdges = edges.map(x => (x(0),x(1)))
+val backwardEdges = edges.map(x => (x(1),x(0)))
+val allInOut = forwardEdges ++ backwardEdges
+val result = allInOut.groupByKey()
+
+
+
+
